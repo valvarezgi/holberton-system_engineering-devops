@@ -1,0 +1,1 @@
+This file is about using shebangs for showing curren directory

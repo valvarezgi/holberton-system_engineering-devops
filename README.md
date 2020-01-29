@@ -1,2 +1,1 @@
-# valvarezgi-holberton-system_engineering-devops
-# valvarezgi-holberton-system_engineering-devops
+In this project you will find basics about the Shell

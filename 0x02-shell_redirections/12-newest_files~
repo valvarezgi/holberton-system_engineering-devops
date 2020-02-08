@@ -1,2 +1,0 @@
-#!/bin/bash
-ls -lrt |tail -10

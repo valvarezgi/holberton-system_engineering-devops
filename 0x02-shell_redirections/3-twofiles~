@@ -1,2 +1,0 @@
-#!/bin/bash
-tail -f /etc/passwd /etc/hosts

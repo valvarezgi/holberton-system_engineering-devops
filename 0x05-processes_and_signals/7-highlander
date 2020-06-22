@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # Script that displays to infinity and beyond with sleep 2, 
 # when receiving a SIGTERM it display I am invencible!!!
-trap "echo 'I am invencible!!!'" SIGTERM
+trap "echo 'I am invincible!!!'" SIGTERM
 while true; do echo "To infinity and beyond"; sleep 2; done

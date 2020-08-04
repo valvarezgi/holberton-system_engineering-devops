@@ -1,0 +1,4 @@
+# Client configuration file
+Host ubuntu
+    PasswprdAuthentication no
+    IdentityFile ~/.ssh/holberton

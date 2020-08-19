@@ -34,7 +34,13 @@ defaults
 
 frontend front_http
         bind *:80
+        reqadd X-Forwarded-Proto:\ https
         mode http
+        default_backend back_http
+
+frontend front_https
+        bind *:443 ssl crt /etc/haproxy/certs/cert.pem
+        reqadd X-Forwarded-Proto:\ https
         default_backend back_http
 
 backend back_http

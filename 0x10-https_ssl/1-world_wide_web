@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Script that shows the information about subdomains
+# shellcheck disable=SC2086
+
+display(){
+    if [ "$#" -eq 2 ]
+    then
+        dig "$2.$1" | grep -A1 'ANSWER SECTION:' | awk -v subd="$2" 'NR==2 {print "The subdomain "subd" is a " $4 " record and points to " $5}'
+    else
+        dig "www.$1" | grep -A1 'ANSWER SECTION:' | awk -v subd="www" 'NR==2 {print "The subdomain "subd" is a " $4 " record and points to " $5}'
+        dig "lb-01.$1" | grep -A1 'ANSWER SECTION:' | awk -v subd="lb-01" 'NR==2 {print "The subdomain "subd" is a " $4 " record and points to " $5}'
+        dig "web-01.$1" | grep -A1 'ANSWER SECTION:' | awk -v subd="web-01" 'NR==2 {print "The subdomain "subd" is a " $4 " record and points to " $5}'
+        dig "web-02.$1" | grep -A1 'ANSWER SECTION:' | awk -v subd="web-02" 'NR==2 {print "The subdomain "subd" is a " $4 " record and points to " $5}'
+    fi
+}
+
+display $1 $2

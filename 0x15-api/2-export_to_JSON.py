@@ -10,7 +10,7 @@ if __name__ == "__main__":
     todo_list = get('https://jsonplaceholder.typicode.com/todos?userId={}'
                     .format(argv[1])).json()
     with open('{}.json'.format(argv[1]), mode='w') as file_json:
-        todos = [dict(todos=element['title'], completed=element['completed'],
+        todos = [dict(todo=element['title'], completed=element['completed'],
                       username=users['username']) for element in todo_list]
         data = {}
         data['{}'.format(argv[1])] = todos

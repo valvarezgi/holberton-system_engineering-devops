@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """exports data in JSON format"""
-from json import dumps
+from json import dump
 from requests import get
 from sys import argv
 
@@ -10,8 +10,13 @@ if __name__ == "__main__":
     todo_list = get('https://jsonplaceholder.typicode.com/todos?userId={}'
                     .format(argv[1])).json()
     with open('{}.json'.format(argv[1]), mode='w') as file_json:
-        todos = [dict(todo=element['title'], completed=element['completed'],
-                      username=users['username']) for element in todo_list]
         data = {}
-        data['{}'.format(argv[1])] = todos
-        file_json.write(dumps(data))
+        user_id = users.get('id')
+        data[user_id] = []
+
+        for todo in todo_list:
+            data[user_id].append({
+                'task': todo.get('title'),
+                'completed': todo.get('completed'),
+                'username': users.get('username')})
+        dump(data, file_json)

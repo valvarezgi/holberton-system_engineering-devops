@@ -11,7 +11,7 @@ def top_ten(subreddit):
               .format(subreddit), headers=user)
     subs = req.json()
     if req.status_code == 404:
-        print (None)
+        print(None)
     else:
         for child in range(len(subs['data']['children'])):
             print(subs['data']['children'][child]['data']['title'])
